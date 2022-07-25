@@ -6,7 +6,6 @@ terraform {
    encrypt        = true
    kms_key_id     = "alias/terraform-bucket-key"
    dynamodb_table = "terraform-state"
-     depends_on = [aws_s3_bucket.terraform-state]
-     depends_on = [dynamodb_table.terraform-state]
+   depends_on = [aws_s3_bucket.terraform-state]
  }
 }
