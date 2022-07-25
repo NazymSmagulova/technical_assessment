@@ -76,7 +76,7 @@ resource "aws_elb" "example" {
   availability_zones = data.aws_availability_zones.all.names
 
   health_check {
-    target              = "HTTP:80/"
+    target              = "TCP:80"
     interval            = 30
     timeout             = 3
     healthy_threshold   = 2
