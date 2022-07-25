@@ -28,11 +28,11 @@ variable "server_port" {
   default     = 8080
 }
 
-# variable "elb_port" {
-#   description = "The port the ELB will use for HTTP requests"
-#   type        = number
-#   default     = 80
-# }
+variable "elb_port" {
+  description = "The port the ELB will use for HTTP requests"
+  type        = number
+  default     = 80
+}
 
 
 variable "tags" {
