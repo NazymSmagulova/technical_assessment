@@ -5,7 +5,8 @@
 
 resource "aws_s3_bucket" "terraform_state" {
   # TODO: change this to your own name! S3 bucket names must be *globally* unique.
-  bucket = "terraform-up-and-running-state"
+  bucket_prefix = "my-backend-bucket-"
+  bucket = "nazyma"
     acl    = "private"
   # Enable versioning so we can see the full revision history of our
   # state files
