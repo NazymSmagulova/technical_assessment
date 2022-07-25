@@ -48,6 +48,7 @@ resource "aws_launch_configuration" "example" {
 
 resource "aws_security_group" "instance" {
   name = "terraform-example-instance"
+  vpc_id                  = aws_vpc.main.id
 
   # Inbound HTTP from anywhere
   ingress {
@@ -97,6 +98,7 @@ resource "aws_elb" "example" {
 
 resource "aws_security_group" "elb" {
   name = "terraform-example-elb"
+  vpc_id                  = aws_vpc.main.id
 
   # Allow all outbound
   egress {
