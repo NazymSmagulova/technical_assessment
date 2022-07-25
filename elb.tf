@@ -6,7 +6,7 @@ data "aws_availability_zones" "all" {}
 
 resource "aws_autoscaling_group" "example" {
   launch_configuration = aws_launch_configuration.example.id
-  availability_zones   = data.aws_availability_zones.all.names
+ # availability_zones   = data.aws_availability_zones.all.names
   vpc_zone_identifier  = [aws_subnet.public1.id, aws_subnet.public2.id]
 
   min_size          = var.min_size
