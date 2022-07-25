@@ -1,7 +1,7 @@
 
- }
+
  resource "aws_s3_bucket" "backend" {
-  bucket = "terraform-s3-backend-pmh86b2v"
+  bucket = "terraform-s3-backend-test-assessment"
   acl    = "private"
 }
 
