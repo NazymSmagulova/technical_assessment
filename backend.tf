@@ -8,6 +8,11 @@ resource "aws_s3_bucket" "terraform_state" {
   versioning {
     enabled = true
   }
+  
+resource "aws_s3_bucket_acl" "example" {
+  bucket = aws_s3_bucket.terraform_state.id
+  acl    = "private"
+}
 
   # Enable server-side encryption by default
   server_side_encryption_configuration {
