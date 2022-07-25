@@ -2,17 +2,14 @@
 resource "aws_s3_bucket" "terraform_state" {
 
   bucket = "technical-assessment-nazym-55"
+  acl    = "private"
 
   # Enable versioning so we can see the full revision history of our
   # state files
   versioning {
     enabled = true
   }
-  
-resource "aws_s3_bucket_acl" "example" {
-  bucket = aws_s3_bucket.terraform_state.id
-  acl    = "private"
-}
+
 
   # Enable server-side encryption by default
   server_side_encryption_configuration {
