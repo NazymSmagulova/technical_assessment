@@ -1,17 +1,11 @@
-resource "aws_s3_bucket" "s3_bucket" {
-  bucket = "terraform-state-repository-s3-test"
+
+ }
+ resource "aws_s3_bucket" "backend" {
+  bucket = "terraform-s3-backend-pmh86b2v"
   acl    = "private"
-  versioning {
-    enabled = true
-  }
 }
-resource "aws_s3_bucket_object" "upload_state" {
-  bucket       = "${aws_s3_bucket.s3_bucket.id}"
-  acl          = "private"
-  key          = "terraform-backend/terraform.tfstate"
-  source       = "terraform.tfstate"
-  content_type = "application/json"
-  depends_on = [
-    "aws_s3_bucket.s3_bucket",
-  ]
+
+resource "aws_s3_bucket" "main" {
+  bucket_prefix = "my-project-"
+  acl           = "private"
 }
