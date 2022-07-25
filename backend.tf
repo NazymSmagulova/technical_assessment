@@ -1,15 +1,17 @@
 
+# ------------------------------------------------------------------------------
+# CREATE THE S3 BUCKET
+# ------------------------------------------------------------------------------
+
 resource "aws_s3_bucket" "terraform_state" {
-
-  bucket = "technical-assessment-nazym-55"
-
+  # TODO: change this to your own name! S3 bucket names must be *globally* unique.
+  bucket = "terraform-up-and-running-state"
+    acl    = "private"
   # Enable versioning so we can see the full revision history of our
   # state files
   versioning {
     enabled = true
   }
-  
-
 
   # Enable server-side encryption by default
   server_side_encryption_configuration {
@@ -19,11 +21,6 @@ resource "aws_s3_bucket" "terraform_state" {
       }
     }
   }
-}
-
-resource "aws_s3_bucket_acl" "example_bucket_acl" {
-  bucket = aws_s3_bucket.terraform_state.id
-  acl    = "private"
 }
 
 # ------------------------------------------------------------------------------
