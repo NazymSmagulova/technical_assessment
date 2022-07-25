@@ -50,18 +50,18 @@ resource "aws_security_group" "instance" {
   name = "terraform-example-instance"
 
   # Inbound HTTP from anywhere
-  ingress {
-    from_port   = var.server_port
-    to_port     = var.server_port
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
+#   ingress {
+#     from_port   = var.server_port
+#     to_port     = var.server_port
+#     protocol    = "tcp"
+#     cidr_blocks = ["0.0.0.0/0"]
+#   }
 
   ingress {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["10.0.101.0/24"]
+    cidr_blocks = ["10.0.101.0/24"], 
   }
 }
 
@@ -76,7 +76,7 @@ resource "aws_elb" "example" {
   availability_zones = data.aws_availability_zones.all.names
 
   health_check {
-    target              = "HTTP:${var.server_port}/"
+    target              = "TCP:80"
     interval            = 30
     timeout             = 3
     healthy_threshold   = 2
@@ -84,9 +84,9 @@ resource "aws_elb" "example" {
   }
 
   listener {
-    lb_port           = var.elb_port
+    lb_port           = 80
     lb_protocol       = "http"
-    instance_port     = var.server_port
+    instance_port     = 80
     instance_protocol = "http"
   }
 }
@@ -108,8 +108,8 @@ resource "aws_security_group" "elb" {
 
   # Inbound HTTP from anywhere
   ingress {
-    from_port   = var.elb_port
-    to_port     = var.elb_port
+    from_port   = 80
+    to_port     = 80
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
