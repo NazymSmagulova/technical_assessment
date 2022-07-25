@@ -1,6 +1,9 @@
 
 
- resource "aws_s3_bucket" "backend" {
+ provider "aws" {
+  region = var.region
+}
+resource "aws_s3_bucket" "backend" {
   bucket = "terraform-s3-backend-test-assessment"
   acl    = "private"
 }
