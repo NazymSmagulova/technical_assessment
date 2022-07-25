@@ -76,7 +76,7 @@ resource "aws_elb" "example" {
   name               = "terraform-asg-example"
   security_groups    = [aws_security_group.elb.id]
   availability_zones = data.aws_availability_zones.all.names
-  vpc_id                  = aws_vpc.main.id
+
 
   health_check {
     target              = "HTTP:${var.server_port}/"
