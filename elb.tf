@@ -7,7 +7,7 @@ data "aws_availability_zones" "all" {}
 resource "aws_autoscaling_group" "example" {
   launch_configuration = aws_launch_configuration.example.id
   availability_zones   = data.aws_availability_zones.all.names
-  vpc_id                  = aws_vpc.main.id
+  vpc_zone_identifier  = [aws_subnet.public1.id, aws_subnet.public2.id]
 
   min_size          = var.min_size
   max_size          = var.max_size
@@ -31,7 +31,6 @@ resource "aws_launch_configuration" "example" {
   image_id        = var.image_id
   instance_type   = var.instance_type
   security_groups = [aws_security_group.instance.id]
-  vpc_id                  = aws_vpc.main.id
 
   user_data = <<-EOF
               #!/bin/bash
