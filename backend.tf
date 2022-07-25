@@ -1,14 +1,17 @@
-terraform {
-  backend "s3" {
-    bucket         = "terraform-tech-assessment-s3"
-    key            = "terraform.tfstate"
-    region         = "us-east-2"
-  }
-}
-resource "aws_s3_bucket" "backend_s3_bucket" {
-  bucket = "terraform-state-repository"
+resource "aws_s3_bucket" "s3_bucket" {
+  bucket = "terraform-state-repository-s3-test"
   acl    = "private"
   versioning {
     enabled = true
   }
+}
+resource "aws_s3_bucket_object" "upload_state" {
+  bucket       = "${aws_s3_bucket.s3_bucket.id}"
+  acl          = "private"
+  key          = "terraform-backend/terraform.tfstate"
+  source       = "terraform.tfstate"
+  content_type = "application/json"
+  depends_on = [
+    "aws_s3_bucket.s3_bucket",
+  ]
 }
