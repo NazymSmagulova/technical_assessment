@@ -61,7 +61,7 @@ resource "aws_security_group" "instance" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["10.0.101.0/24"], 
+    cidr_blocks = var.private_cidr
   }
 }
 
