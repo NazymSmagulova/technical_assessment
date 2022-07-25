@@ -1,7 +1,7 @@
 
 resource "aws_s3_bucket" "terraform_state" {
 
-  bucket = "technical_assessment_nazyma"
+  bucket = "technical-assessment-nazym-55"
 
   # Enable versioning so we can see the full revision history of our
   # state files
