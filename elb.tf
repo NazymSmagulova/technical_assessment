@@ -54,14 +54,14 @@ resource "aws_security_group" "instance" {
 #     from_port   = var.server_port
 #     to_port     = var.server_port
 #     protocol    = "tcp"
-#     cidr_blocks = ["10.0.0.0/0"]
+#     cidr_blocks = ["10.0.0.0/16"]
 #   }
 
   ingress {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["10.0.101.0/24", "10.1.102.0/24", "10.2.103.0/24"]
+    cidr_blocks = ["10.0.101.0/24", "10.0.102.0/24"]
   }
 }
 
