@@ -76,17 +76,17 @@ resource "aws_elb" "example" {
   availability_zones = data.aws_availability_zones.all.names
 
   health_check {
-    target              = "TCP:80"
+    target              = "HTTP:${var.server_port}/"
     interval            = 30
     timeout             = 3
     healthy_threshold   = 2
     unhealthy_threshold = 2
   }
-
+  
   listener {
-    lb_port           = 8080
+    lb_port           = var.elb_port
     lb_protocol       = "http"
-    instance_port     = 80
+    instance_port     = var.server_port
     instance_protocol = "http"
   }
 }
