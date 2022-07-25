@@ -75,7 +75,7 @@ resource "aws_security_group" "instance" {
 resource "aws_elb" "example" {
   name               = "terraform-asg-example"
   security_groups    = [aws_security_group.elb.id]
-  availability_zones = data.aws_availability_zones.all.names
+  # availability_zones = data.aws_availability_zones.all.names
   subnets = [aws_subnet.public1.id]
 
   health_check {
