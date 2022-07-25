@@ -14,4 +14,3 @@ tfenv use 1.1.1
 terraform apply  -var-file  envs/dev.tfvars
 ```
 # To access web server please use clb_dns_name output that is given by Elastic Load Balancer
-# S3 bucket serves as a backend
