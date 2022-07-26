@@ -82,7 +82,7 @@ variable "desired_capacity" {
   description = "Provide a value"
   type        = string
   default     = ""
-
+}
 
 
 variable "subnets" {
