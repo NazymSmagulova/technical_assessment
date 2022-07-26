@@ -82,4 +82,10 @@ variable "desired_capacity" {
   description = "Provide a value"
   type        = string
   default     = ""
+
+
+
+variable "subnets" {
+  description = "A list of subnet IDs to attach to the ELB"
+  type        = list(string)
 }

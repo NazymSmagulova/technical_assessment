@@ -74,7 +74,7 @@ resource "aws_security_group" "instance" {
 resource "aws_elb" "example" {
   name               = "terraform-asg-example"
   security_groups    = [aws_security_group.elb.id]
-  subnets = ["aws_subnet.public1.id", "aws_subnet.public2.id"]
+  subnets = var.subnets
 
   health_check {
     target              = "HTTP:${var.server_port}/"
